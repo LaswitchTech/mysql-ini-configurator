@@ -39,6 +39,7 @@ jobs:
       - name: Move Configurator.exe to dist/windows
         run: |
           if (-Not (Test-Path dist/windows)) { New-Item -ItemType Directory -Path dist/windows }
+          if (Test-Path dist/windows/Configurator.exe) { Remove-Item dist/windows/Configurator.exe }
           Move-Item dist\Configurator.exe dist\windows\Configurator.exe
 
       # Step 6: Commit the .exe file to the dev branch
