@@ -33,13 +33,14 @@ jobs:
       # Step 4: Build the .exe file
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller --onefile --noconsole --name Configurator src/configurator.py
+          pyinstaller --onefile --noconsole --name Configurator --icon src/icons/icon.ico src/configurator.py
 
       # Step 5: Move the compiled executable to dist/windows
       - name: Move Configurator.exe to dist/windows
         run: |
-          mkdir -p dist/windows
-          move dist\Configurator.exe dist\windows\Configurator.exe
+          if (-Not (Test-Path dist/windows)) { New-Item -ItemType Directory -Path dist/windows }
+          if (Test-Path dist/windows/Configurator.exe) { Remove-Item dist/windows/Configurator.exe }
+          Move-Item dist\Configurator.exe dist\windows\Configurator.exe
 
       # Step 6: Commit the .exe file to the dev branch
       - name: Commit .exe to dev branch
