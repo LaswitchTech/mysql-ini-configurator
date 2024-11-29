@@ -926,7 +926,6 @@ class MySQLConfigurator(QMainWindow):
         # Create the checkbox
         check_box = QCheckBox()
         check_box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        # check_box.setStyleSheet("padding: 10px; border-radius: 5px; border: 1px solid #76797C;")
 
         # Enable checkbox if value is true/uncommented
         if value.lower() in ["1", "true", "yes", "on", ""]:
