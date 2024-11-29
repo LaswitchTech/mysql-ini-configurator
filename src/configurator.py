@@ -927,6 +927,9 @@ class MySQLConfigurator(QMainWindow):
         check_box = QCheckBox()
         check_box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
 
+        # Convert value to string
+        value = str(value).lower()
+
         # Enable checkbox if value is true/uncommented
         if value.lower() in ["1", "true", "yes", "on", ""]:
             check_box.setChecked(True)
