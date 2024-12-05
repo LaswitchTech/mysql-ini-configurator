@@ -21,7 +21,7 @@ APP_NAME = "MySQL INI Configurator"
 INI_FILE = "my.ini"
 LOG_FILE = "log.log"
 ENCODING = "mbcs" if sys.platform == "win32" else "utf-8"
-DEBUG = False
+DEBUG = True
 
 class CaseSensitiveConfigParser(ConfigParser):
     def __init__(self, *args, **kwargs):
@@ -231,10 +231,10 @@ class Configurator(QMainWindow):
                     if parameters["type"] == "raw":
                         self.config[section][key] = "False"
                         raw_string = parameters["default"]
-                        if raw_string[-1] != "\n":
-                            raw_string += "\n"
                         # Debugging
                         self.log(f"Raw String: {raw_string}")
+                        if raw_string[-1] != "\n":
+                            raw_string += "\n"
                         if section in section_lines and raw_string in section_lines[section]:
                             self.config[section][key] = "True"
                     elif section in Parser and key in Parser[section]:
