@@ -231,8 +231,7 @@ class Configurator(QMainWindow):
                     if parameters["type"] == "raw":
                         self.config[section][key] = "False"
                         raw_string = parameters["default"]
-                        # Debugging
-                        self.log(f"Raw String: {raw_string}")
+                        self.log(f"Raw String: {raw_string}") # Debugging
                         if raw_string[-1] != "\n":
                             raw_string += "\n"
                         if section in section_lines and raw_string in section_lines[section]:
