@@ -21,7 +21,7 @@ APP_NAME = "MySQL INI Configurator"
 INI_FILE = "my.ini"
 LOG_FILE = "log.log"
 ENCODING = "mbcs" if sys.platform == "win32" else "utf-8"
-DEBUG = True
+DEBUG = False
 
 class CaseSensitiveConfigParser(ConfigParser):
     def __init__(self, *args, **kwargs):
