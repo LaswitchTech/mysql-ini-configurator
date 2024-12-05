@@ -66,21 +66,21 @@
             "label": "Skip Networking",
             "tooltip": "Don't listen on a TCP/IP port",
             "type": "raw",
-            "default": false,
+            "default": "skip-networking",
             "required": false
         },
         "enable-named-pipe": {
             "label": "Enable Named Pipe",
             "tooltip": "Enable named pipe connections",
             "type": "raw",
-            "default": false,
+            "default": "enable-named-pipe",
             "required": false
         },
         "shared-memory": {
             "label": "Shared Memory",
             "tooltip": "Enable shared memory connections",
             "type": "raw",
-            "default": false,
+            "default": "shared-memory",
             "required": false
         },
         "shared-memory-base-name": {
