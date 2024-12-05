@@ -5,14 +5,14 @@
             "tooltip": "The path to a named pipe to use for connection to a local server",
             "type": "text",
             "default": "",
-            "required": true
+            "required": false
         },
         "socket": {
             "label": "Socket",
             "tooltip": "The path to a Unix socket to use for connection to a local server",
             "type": "text",
             "default": "MYSQL",
-            "required": true
+            "required": false
         },
         "port": {
             "label": "Port",
@@ -20,7 +20,7 @@
             "type": "number",
             "default": 3306,
             "options": {
-                "min": 0,
+                "min": 1,
                 "max": 65535
             },
             "required": true
@@ -30,8 +30,8 @@
         "no-beep": {
             "label": "No Beep",
             "tooltip": "Turn off the beep on error",
-            "type": "checkbox",
-            "default": false,
+            "type": "raw",
+            "default": "no-beep",
             "required": false
         },
         "default-character-set": {
@@ -58,28 +58,28 @@
                 "gbk",
                 "gb18030"
             ],
-            "required": false
+            "required": true
         }
     },
     "mysqld": {
         "skip-networking": {
             "label": "Skip Networking",
             "tooltip": "Don't listen on a TCP/IP port",
-            "type": "checkbox",
+            "type": "raw",
             "default": false,
             "required": false
         },
         "enable-named-pipe": {
             "label": "Enable Named Pipe",
             "tooltip": "Enable named pipe connections",
-            "type": "checkbox",
+            "type": "raw",
             "default": false,
             "required": false
         },
         "shared-memory": {
             "label": "Shared Memory",
             "tooltip": "Enable shared memory connections",
-            "type": "checkbox",
+            "type": "raw",
             "default": false,
             "required": false
         },
@@ -110,7 +110,7 @@
             "type": "number",
             "default": 3306,
             "options": {
-                "min": 0,
+                "min": 1,
                 "max": 65535
             },
             "required": true
@@ -119,14 +119,14 @@
             "label": "Base Directory",
             "tooltip": "The path to the MySQL installation directory",
             "type": "path",
-            "default": "./",
+            "default": "%AppDir%",
             "required": true
         },
         "datadir": {
             "label": "Data Directory",
             "tooltip": "The path to the database root directory",
             "type": "path",
-            "default": "data",
+            "default": "%AppDir%/data",
             "required": true
         },
         "character-set-server": {
@@ -183,13 +183,7 @@
             "label": "SQL Mode",
             "tooltip": "The SQL modes for MySQL operations",
             "type": "multi-select",
-            "default": [
-                "STRICT_TRANS_TABLES",
-                "NO_ZERO_IN_DATE",
-                "NO_ZERO_DATE",
-                "ERROR_FOR_DIVISION_BY_ZERO",
-                "NO_ENGINE_SUBSTITUTION"
-            ],
+            "default": "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION",
             "options": [
                 "STRICT_TRANS_TABLES",
                 "NO_ZERO_IN_DATE",
@@ -220,29 +214,37 @@
         },
         "general-log": {
             "label": "General Log",
-            "tooltip": "Enable or disable the general query log",
-            "type": "checkbox",
-            "default": false,
+            "tooltip": "Enable or disable the general query log. 0=Off, 1=On",
+            "type": "range",
+            "default": 0,
+            "options": {
+                "min": 0,
+                "max": 1
+            },
             "required": true
         },
         "general_log_file": {
             "label": "General Log File",
             "tooltip": "The path to the general query log file",
-            "type": "path",
+            "type": "text",
             "default": "AZ-MA-AS01.log",
             "required": true
         },
         "slow-query-log": {
             "label": "Slow Query Log",
-            "tooltip": "Enable or disable the slow query log",
-            "type": "checkbox",
-            "default": true,
+            "tooltip": "Enable or disable the slow query log. 0=Off, 1=On",
+            "type": "range",
+            "default": 0,
+            "options": {
+                "min": 0,
+                "max": 1
+            },
             "required": true
         },
         "slow_query_log_file": {
             "label": "Slow Query Log File",
             "tooltip": "The path to the slow query log file",
-            "type": "path",
+            "type": "text",
             "default": "AZ-MA-AS01-slow.log",
             "required": true
         },
@@ -253,23 +255,23 @@
             "default": 10,
             "options": {
                 "min": 0,
-                "max": 1000
+                "max": 60
             },
             "required": true
         },
         "log-error": {
             "label": "Error Log File",
             "tooltip": "The path to the error log file",
-            "type": "path",
+            "type": "text",
             "default": "AZ-MA-AS01.err",
             "required": true
         },
         "log-bin": {
             "label": "Binary Log File",
             "tooltip": "The base name for binary log files",
-            "type": "path",
+            "type": "text",
             "default": "AZ-MA-AS01-bin",
-            "required": false
+            "required": true
         },
         "server-id": {
             "label": "Server ID",
@@ -277,7 +279,7 @@
             "type": "number",
             "default": 1,
             "options": {
-                "min": 0,
+                "min": 1,
                 "max": 2147483647
             },
             "required": true
@@ -297,13 +299,13 @@
             "label": "Secure File Privilege Directory",
             "tooltip": "Restricts file import/export operations to the specified directory",
             "type": "path",
-            "default": "G:/mysql/uploads",
+            "default": "%AppDir%/uploads",
             "required": true
         },
         "max_connections": {
             "label": "Max Connections",
             "tooltip": "The maximum number of concurrent connections allowed",
-            "type": "number",
+            "type": "range",
             "default": 151,
             "options": {
                 "min": 1,
@@ -314,7 +316,7 @@
         "table_open_cache": {
             "label": "Table Open Cache",
             "tooltip": "The number of open tables for all threads",
-            "type": "number",
+            "type": "range",
             "default": 4000,
             "options": {
                 "min": 1,
@@ -358,7 +360,7 @@
         "myisam_max_sort_file_size": {
             "label": "MyISAM Max Sort File Size",
             "tooltip": "The maximum size for temporary files during MyISAM index creation",
-            "type": "filesize",
+            "type": "range",
             "default": 2146435072,
             "options": {
                 "min": 131072,
@@ -410,6 +412,20 @@
             },
             "required": true
         },
+        "innodb_data_home_dir": {
+            "label": "InnoDB Home Directory",
+            "tooltip": "The path to the InnoDB data files",
+            "type": "path",
+            "default": "",
+            "required": false
+        },
+        "skip-innodb": {
+            "label": "Skip InnoDB",
+            "tooltip": "Disable the InnoDB storage engine",
+            "type": "raw",
+            "default": "skip-innodb",
+            "required": false
+        },
         "innodb_flush_log_at_trx_commit": {
             "label": "InnoDB Flush Log at Commit",
             "tooltip": "Controls InnoDB log flushing at transaction commit 0=No, 1=Yes, 2=Every second",
@@ -418,6 +434,17 @@
             "options": {
                 "min": 0,
                 "max": 2
+            },
+            "required": true
+        },
+        "innodb_log_buffer_size": {
+            "label": "InnoDB Log Buffer Size",
+            "tooltip": "The size of the buffer for InnoDB log writes",
+            "type": "filesize",
+            "default": 16777216,
+            "options": {
+                "min": 1048576,
+                "max": 1073741824
             },
             "required": true
         },
@@ -430,7 +457,7 @@
                 "min": 134217728,
                 "max": "%TotalRAM%"
             },
-            "required": true
+            "required": false
         },
         "innodb_redo_log_capacity": {
             "label": "InnoDB Redo Log Capacity",
@@ -582,20 +609,13 @@
             "default": 10000,
             "required": true
         },
-        "plugin_load": {
-            "label": "Plugins to Load",
-            "tooltip": "A comma-separated list of plugins to load at startup",
-            "type": "text",
-            "default": "",
-            "required": false
-        },
         "mysqlx_port": {
             "label": "MySQL X Protocol Port",
             "tooltip": "The port for MySQL X Protocol connections",
             "type": "number",
             "default": 33060,
             "options": {
-                "min": 0,
+                "min": 1,
                 "max": 65535
             },
             "required": true
