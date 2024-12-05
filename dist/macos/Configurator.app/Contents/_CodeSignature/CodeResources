@@ -909,6 +909,15 @@
 			<key>requirement</key>
 			<string>cdhash H"2261d2bfa70e9f0ee9a7271e970a5e46dc64a367"</string>
 		</dict>
+		<key>Frameworks/lib-dynload/_json.cpython-312-darwin.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			qSYoOuva4W2H3BYHNy1obHGIBCI=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a926283aebdae16d87dc1607372d686c71880422"</string>
+		</dict>
 		<key>Frameworks/lib-dynload/_lzma.cpython-312-darwin.so</key>
 		<dict>
 			<key>cdhash</key>
@@ -1147,19 +1156,19 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			8SAv1FlHxKGUsDGivQI+VjDSrGM=
+			7Arz4vGdsfnAuaexMAJZljT7Luc=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"f1202fd45947c4a194b031a2bd023e5630d2ac63"</string>
+			<string>cdhash H"ec0af3e2f19db1f9c0b9a7b13002599634fb2ee7"</string>
 		</dict>
 		<key>Frameworks/liblzma.5.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			1M5H9GiVPPxiHgvsdXWAn9ve7ZM=
+			x+NXS9imP/uXe6dAbAmCjmGUOUY=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"d4ce47f468953cfc621e0bec7575809fdbdeed93"</string>
+			<string>cdhash H"c7e3574bd8a63ffb977ba7406c09828e61943946"</string>
 		</dict>
 		<key>Frameworks/libmpdec.4.dylib</key>
 		<dict>
@@ -1174,10 +1183,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			E1QEFQkWhhO6cDXdA60JGvZwfjw=
+			XrTRfRTnhN0aQnOWpdD8Dtv1B9Y=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"1354041509168613ba7035dd03ad091af6707e3c"</string>
+			<string>cdhash H"5eb4d17d14e784dd1a427396a5d0fc0edbf507d6"</string>
 		</dict>
 		<key>Frameworks/psutil/_psutil_osx.abi3.so</key>
 		<dict>
